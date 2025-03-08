@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshPress Laundry Services | Professional Laundry & Dry Cleaning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --primary: #1e88e5;
+            --primary-dark: #1565c0;
+            --primary-light: #bbdefb;
+            --secondary: #26c6da;
+            --dark: #263238;
+            --light: #f5f5f5;
+            --grey: #607d8b;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-light);
+            background-color: var(--primary);
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 136, 229, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            margin-left: 30px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: var(--dark);
+            transition: var(--transition);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- Features Section --- */
+        .features-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--primary-light);
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            margin-bottom: 20px;
+            color: var(--grey);
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- Process Section --- */
+        .process-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .process-card {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .process-step {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .process-card:not(:last-child):after {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 60px;
+            right: -15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            padding: 30px;
+            list-style: none;
+        }
+
+        .pricing-feature {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-feature i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .pricing-cta {
+            text-align: center;
+            padding: 0 30px 30px;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials {
+            background-color: var(--primary-light);
+        }
+
+        .testimonials-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-content:before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-light);
+            font-size: 2rem;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            z-index: -1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+        }
+
+        .testimonial-position {
+            color: var(--grey);
+            font-size: 0.9rem;
+        }
+
+        /* --- CTA Section --- */
+        .cta {
+            background: linear-gradient(rgba(30, 136, 229, 0.9), rgba(21, 101, 192, 0.9)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Form Section --- */
+        .form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-input, 
+        .form-textarea, 
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-input:focus, 
+        .form-textarea:focus, 
+        .form-select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            margin-bottom: 50px;
+        }
+
+        .footer-heading {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 10px;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Floating Buttons --- */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 90;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-phone {
+            background-color: var(--success);
+        }
+
+        .floating-whatsapp {
+            background-color: #25D366;
+        }
+
+        /* --- Modal --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--grey);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .process-card:not(:last-child):after {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card, .service-card, .pricing-card, .testimonial-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-tshirt" style="font-size: 2rem; color: var(--primary);"></i>
+                <div class="logo-text">FreshPress</div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="#process" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item nav-cta"><a href="#order" class="btn">Order Now</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Premium Laundry & Dry Cleaning Services</h1>
+                <p class="hero-subtitle">Professional cleaning solutions for all your garments, delivered to your doorstep.</p>
+                <div class="hero-cta">
+                    <a href="#order" class="btn">Schedule Pickup</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+                <p>Experience the difference with our premium laundry services</p>
+            </div>
+            
+            <div class="grid features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Turnaround</h3>
+                    <p>Get your clothes back in just 24 hours with our express service or standard 48-hour delivery.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="feature-title">Free Pickup & Delivery</h3>
+                    <p>We offer convenient pickup and delivery services to save you time and hassle.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Eco-Friendly Process</h3>
+                    <p>We use environmentally friendly detergents and energy-efficient equipment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Quality Guarantee</h3>
+                    <p>If you're not completely satisfied, we'll re-clean your items free of charge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Professional solutions for all your laundry needs</p>
+            </div>
+            
+            <div class="grid services-grid">
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Wash & Fold Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Wash & Fold</h3>
+                        <p class="service-desc">Our most popular service. We wash, dry, and neatly fold your everyday clothes.</p>
+                        <div class="service-price">From $2.50/lb</div>
+                        <a href="#order" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Dry Cleaning Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Dry Cleaning</h3>
+                        <p class="service-desc">Professional dry cleaning for your suits, dresses, and delicate garments.</p>
+                        <div class="service-price">From $6.99/item</div>
+                        <a href="#order" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Ironing & Pressing Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Ironing & Pressing</h3>
+                        <p class="service-desc">Get your clothes professionally pressed and ready to wear.</p>
+                        <div class="service-price">From $3.99/item</div>
+                        <a href="#order" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Business Shirt Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Business Shirts</h3>
+                        <p class="service-desc">Keep your business shirts immaculately clean and professionally pressed.</p>
+                        <div class="service-price">From $2.99/shirt</div>
+                        <a href="#order" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Bedding & Linens Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Bedding & Linens</h3>
+                        <p class="service-desc">We clean all types of bedding including comforters, duvets, and sheets.</p>
+                        <div class="service-price">From $15.99/item</div>
+                        <a href="#order" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Specialty Items Service" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Specialty Items</h3>
+                        <p class="service-desc">Cleaning for rugs, curtains, wedding dresses, and other specialty items.</p>
+                        <div class="service-price">Custom Quote</div>
+                        <a href="#contact" class="btn">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Simple, convenient, and hassle-free</p>
+            </div>
+            
+            <div class="grid process-grid">
+                <div class="process-card">
+                    <div class="process-step">1</div>
+                    <h3>Schedule</h3>
+                    <p>Book your laundry pickup online or call us directly.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-step">2</div>
+                    <h3>Pickup</h3>
+                    <p>We collect your dirty laundry at your preferred time.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-step">3</div>
+                    <h3>Clean</h3>
+                    <p>Our experts clean your clothes using premium products.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-step">4</div>
+                    <h3>Deliver</h3>
+                    <p>We deliver your fresh clean clothes back to your door.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Pricing Plans</h2>
+            <p>Affordable solutions for all your laundry needs</p>
+        </div>
+        
+        <div class="grid pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Basic</h3>
+                    <div class="pricing-price">$49<span class="pricing-period">/month</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 20 lbs of laundry per month</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Weekly pickup & delivery</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Standard 48h turnaround</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Wash & fold service</li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#order" class="btn">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Standard</h3>
+                    <div class="pricing-price">$79<span class="pricing-period">/month</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 40 lbs of laundry per month</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Weekly pickup & delivery</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 24h express turnaround</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Wash & fold service</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 5 dress shirts included</li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#order" class="btn">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Premium</h3>
+                    <div class="pricing-price">$129<span class="pricing-period">/month</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 60 lbs of laundry per month</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Twice weekly pickup & delivery</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 24h express turnaround</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> Wash & fold service</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 10 dress shirts included</li>
+                    <li class="pricing-feature"><i class="fas fa-check"></i> 2 dry cleaning items included</li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#order" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Don't just take our word for it</p>
+        </div>
+        
+        <div class="grid testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>FreshPress has been a game-changer for me. The quality of service is outstanding, and I love how convenient the pickup and delivery is. My clothes have never been cleaner!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Customer" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">Sarah Johnson</div>
+                        <div class="testimonial-position">Busy Professional</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>As a working parent, FreshPress has saved me countless hours of laundry time. Their subscription plan is perfect for our family's needs, and the staff is always friendly and professional.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Customer" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">Michael Rodriguez</div>
+                        <div class="testimonial-position">Father of Three</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>I've tried several laundry services, and FreshPress is by far the best. Their attention to detail is impressive - they even sorted my socks correctly! I highly recommend their dry cleaning service.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/50/50" alt="Customer" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">Emily Chen</div>
+                        <div class="testimonial-position">Business Owner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta">
+    <div class="container">
+        <h2 class="cta-title">Ready to Save Time?</h2>
+        <p class="cta-text">Join thousands of satisfied customers who have reclaimed their weekends and said goodbye to laundry stress. Sign up today and get 20% off your first order!</p>
+        <a href="#order" class="btn">Schedule Your First Pickup</a>
+    </div>
+</section>
+
+<!-- Contact/Form Section -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Have questions? We're here to help</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="contact-form" class="grid form-grid">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="johndoe@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="(123) 456-7890" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <select id="subject" class="form-select" required>
+                        <option value="" disabled selected>Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="service">Service Information</option>
+                        <option value="quote">Request a Quote</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Order Form Section -->
+<section class="section" id="order">
+    <div class="container">
+        <div class="section-title">
+            <h2>Schedule a Pickup</h2>
+            <p>Let us take care of your laundry needs</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="order-form" class="grid form-grid">
+                <div class="form-group">
+                    <label for="order-name" class="form-label">Full Name</label>
+                    <input type="text" id="order-name" class="form-input" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-email" class="form-label">Email Address</label>
+                    <input type="email" id="order-email" class="form-input" placeholder="johndoe@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="order-phone" class="form-input" placeholder="(123) 456-7890" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-address" class="form-label">Address</label>
+                    <input type="text" id="order-address" class="form-input" placeholder="123 Main St" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-city" class="form-label">City</label>
+                    <input type="text" id="order-city" class="form-input" placeholder="New York" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-zip" class="form-label">ZIP Code</label>
+                    <input type="text" id="order-zip" class="form-input" placeholder="10001" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-date" class="form-label">Pickup Date</label>
+                    <input type="date" id="order-date" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-time" class="form-label">Pickup Time</label>
+                    <select id="order-time" class="form-select" required>
+                        <option value="" disabled selected>Select a time</option>
+                        <option value="morning">Morning (8AM - 12PM)</option>
+                        <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                        <option value="evening">Evening (4PM - 8PM)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-service" class="form-label">Service Type</label>
+                    <select id="order-service" class="form-select" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="wash-fold">Wash & Fold</option>
+                        <option value="dry-cleaning">Dry Cleaning</option>
+                        <option value="ironing">Ironing & Pressing</option>
+                        <option value="shirts">Business Shirts</option>
+                        <option value="bedding">Bedding & Linens</option>
+                        <option value="specialty">Specialty Items</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-plan" class="form-label">Plan</label>
+                    <select id="order-plan" class="form-select" required>
+                        <option value="" disabled selected>Select a plan</option>
+                        <option value="one-time">One-time Service</option>
+                        <option value="basic">Basic Subscription ($49/month)</option>
+                        <option value="standard">Standard Subscription ($79/month)</option>
+                        <option value="premium">Premium Subscription ($129/month)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="order-notes" class="form-label">Special Instructions</label>
+                    <textarea id="order-notes" class="form-textarea" placeholder="Any special instructions or requests?"></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Schedule Pickup</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="grid footer-grid">
+            <div class="footer-column">
+                <h3 class="footer-heading">FreshPress</h3>
+                <p>Professional laundry and dry cleaning services that save you time and deliver quality results.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#home">Home</a></li>
+                    <li class="footer-link"><a href="#services">Services</a></li>
+                    <li class="footer-link"><a href="#pricing">Pricing</a></li>
+                    <li class="footer-link"><a href="#process">How It Works</a></li>
+                    <li class="footer-link"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#services">Wash & Fold</a></li>
+                    <li class="footer-link"><a href="#services">Dry Cleaning</a></li>
+                    <li class="footer-link"><a href="#services">Ironing & Pressing</a></li>
+                    <li class="footer-link"><a href="#services">Business Shirts</a></li>
+                    <li class="footer-link"><a href="#services">Bedding & Linens</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Us</h3>
+                <div class="footer-contact">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Laundry Street, New York, NY 10001</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone"></i>
+                    <span>(123) 456-7890</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@freshpresslaundry.com</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon-Sat: 8AM - 8PM</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 FreshPress Laundry Services. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+    <a href="tel:1234567890" class="floating-btn floating-phone"><i class="fas fa-phone"></i></a>
+    <a href="https://wa.me/1234567890" class="floating-btn floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="promo-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Special Offer!</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Sign up today and get 20% off your first order. Use code <strong>WELCOME20</strong> at checkout.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-close">Later</button>
+            <a href="#order" class="btn">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Toggle Mobile Navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Show Promo Modal
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('promo-modal').style.display = 'flex';
+        }, 3000);
+    });
+    
+    // Close Modal
+    document.querySelectorAll('.modal-close').forEach(button => {
+        button.addEventListener('click', () => {
+            document.getElementById('promo-modal').style.display = 'none';
+        });
+    });
+    
+    // Form Validation
+    const contactForm = document.getElementById('contact-form');
+    const orderForm = document.getElementById('order-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you shortly.');
+            this.reset();
+        });
+    }
+    
+    if (orderForm) {
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your order! We have scheduled your pickup.');
+            this.reset();
+        });
+    }
+</script>
+</body>
+</html>
